@@ -1,6 +1,6 @@
-#' 指定地域への国籍別訪問者数
+#' The number of foreigners who visited a given prefecture
 #' 
-#' 地域単位、年単位の外国人訪問者数を返します。
+#' This function provides the number of foreigners who visited a given prefecture. Also provides where they are from and when they visited.
 #' 
 #' @param api_key
 #' @param purpose
@@ -9,7 +9,19 @@
 #' 
 #' @author Koki Ando
 #' 
-#' @seealso <https://opendata.resas-portal.go.jp/docs/api/v1/tourism/foreigners/forFrom.html>
+#' @import RCurl
+#' @import jsonlite
+#' @import 
+#' 
+#' @seealso \url{https://opendata.resas-portal.go.jp/docs/api/v1/tourism/foreigners/forFrom.html}
+#' 
+#' @return This function returns \code{data.frame} including columns:
+#' \itemize{
+#'  \item year
+#'  \item quarter
+#'  \item value
+#'  \item Country
+#' }
 #' 
 #' @examples
 #' \dontrun{
@@ -22,10 +34,10 @@
 getTourismStats <- function(api_key, purpose=1, year=2012, prefCode){
   base_url = "https://opendata.resas-portal.go.jp/api/v1/tourism/foreigners/forFrom?purpose="
   
-  getdata.json <- getURL(paste0(base_url, purpose, "&year=", year, "&prefCode=", prefCode),
-                         httpheader = paste('X-API-KEY:', api_key))
-  Country_list <- fromJSON(getdata.json)$result$changes$countryName
-  data_list = fromJSON(getdata.json)$result$changes$data
+  getdata.json <- RCurl::getURL(paste0(base_url, purpose, "&year=", year, "&prefCode=", prefCode),
+                                httpheader = paste('X-API-KEY:', api_key))
+  Country_list <- jsonlite::fromJSON(getdata.json)$result$changes$countryName
+  data_list = jsonlite::fromJSON(getdata.json)$result$changes$data
   for (i in 1:length(data_list)){
     data_list[[i]]$Country <- Country_list[[i]]
   }
