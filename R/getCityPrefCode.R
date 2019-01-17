@@ -1,22 +1,37 @@
+#' City Code
+#' 
+#' Get list of city codes of a given prefecture
 #'
-#'
-#'
+#' @param api_key Your API application key
+#' @param pref Name of prefecture to fetch information for
+#' 
+#' @author Koki Ando
+#' 
+#' @import RCurl
+#' @import jsonlite
+#' @import dplyr
+#' @import magrittr
+#' 
+#' @return This function returns \code{date.fram} including columns:
+#' \itemize{
+#'  \item prefCode
+#'  \item cityCode
+#'  \item cityName
+#'  \item bigCityFlag
+#' }
 #'
 #' @examples
 #' \dontrun{
-#'   getCityPrefCode(api_key='****************************************', 
+#'   getCityPrefCode(api_key='Your API key', 
 #'   pref='北海道')
 #' }
 #' 
 #' @export
 
-
-
 getCityPrefCode <- function(api_key, pref="東京都"){
   base_url<-'https://opendata.resas-portal.go.jp/'
   api<-'api/v1-rc.1/prefectures'
-  api_key = api_key
-  
+
   getdata.json<-RCurl::getURL(paste0(base_url, api), 
                        httpheader = paste('X-API-KEY:', api_key))
   prefectureCode <- jsonlite::fromJSON(getdata.json)$result %>%
