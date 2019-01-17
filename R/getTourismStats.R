@@ -1,17 +1,17 @@
 #' The number of foreigners who visited a given prefecture
 #' 
-#' This function provides the number of foreigners who visited a given prefecture. Also provides where they are from and when they visited.
+#' This function provides the number of foreigners who visited a given prefecture. 
+#' Also provides where they are from and when they visited.
 #' 
-#' @param api_key
-#' @param purpose
-#' @param year
-#' @param prefCode
+#' @param api_key Your API application key
+#' @param purpose Purpose of visiting. Defaults 1. 1 means "ALL", 2 means "Sightseeing or Leisure".
+#' @param year Year. Years from 2011 to 2016 are only valid. Defaults 2012.
+#' @param prefCode Prefecture code
 #' 
 #' @author Koki Ando
 #' 
 #' @import RCurl
 #' @import jsonlite
-#' @import 
 #' 
 #' @seealso \url{https://opendata.resas-portal.go.jp/docs/api/v1/tourism/foreigners/forFrom.html}
 #' 

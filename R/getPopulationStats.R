@@ -1,7 +1,11 @@
-#'
-#' @param api_key 
-#' @param cityCode
-#' @param prefCode
+#' Population data for a given place
+#' 
+#' This function provides population data in a given city and prefecture
+#' 
+#' @param api_key Your API application key
+#' @param cityCode City codes. You can select all cities by using "-". You can check these
+#'   codes by using \code{getCityPrefCode} function.
+#' @param prefCode Prefecture codes.
 #' 
 #' @author Koki Ando
 #' 
@@ -23,6 +27,8 @@
 #'  \item cityCode
 #'  \item prefCode
 #' }
+#' 
+#' @seealso \url{https://opendata.resas-portal.go.jp/docs/api/v1/population/composition/perYear.html}
 #'
 #' @examples
 #' \dontrun{
