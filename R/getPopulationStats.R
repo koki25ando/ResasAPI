@@ -9,8 +9,6 @@
 #' 
 #' @author Koki Ando
 #' 
-#' @import RCurl
-#' @import jsonlite
 #' @import dplyr
 #' @import magrittr
 #' 

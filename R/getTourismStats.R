@@ -10,9 +10,6 @@
 #' 
 #' @author Koki Ando
 #' 
-#' @import RCurl
-#' @import jsonlite
-#' 
 #' @seealso \url{https://opendata.resas-portal.go.jp/docs/api/v1/tourism/foreigners/forFrom.html}
 #' 
 #' @return This function returns \code{data.frame} including columns:

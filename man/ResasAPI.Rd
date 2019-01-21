@@ -8,7 +8,7 @@
 Provides an interface to the RESAS API and allows R users to download piblicly available data 
 on RESAS API.}
 \description{
-What the package does (one paragraph).
+Provides an interface to RESAS API.
 }
 \seealso{
 \url{https://opendata.resas-portal.go.jp/}
