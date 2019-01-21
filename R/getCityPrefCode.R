@@ -34,7 +34,7 @@ getCityPrefCode <- function(api_key, pref="東京都"){
                        httpheader = paste('X-API-KEY:', api_key))
   prefectureCode <- jsonlite::fromJSON(getdata.json)$result %>%
     dplyr::filter(prefName == pref) %>% 
-    plyr::select(prefCode)
+    dplyr::select(prefCode)
   
   city_param = "api/v1/cities?prefCode="
   city_rawdata <- RCurl::getURL(paste0(base_url, city_param, prefectureCode),
