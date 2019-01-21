@@ -22,4 +22,5 @@ ResasAPIは現在CRANに公開されていませんので、開発版をご利�
 
 ```{r}
 devtools::install_github("koki25ando/ResasAPI")
+library(ResasAPI)
 ```
