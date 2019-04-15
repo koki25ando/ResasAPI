@@ -38,6 +38,9 @@ Settlement amount ratio of each category for a municipality
 }
 
 }
+\seealso{
+\url{https://opendata.resas-portal.go.jp/docs/api/v1/municipality/finance/forSettlementAmount.html}
+}
 \author{
 Koki Ando <koki.25.ando@gmail.com>
 }

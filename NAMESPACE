@@ -3,6 +3,7 @@
 export()
 export(getCityPrefCode)
 export(getEmploymentStat)
+export(getLocalTexes)
 export(getPopulationStats)
 export(getSettlementAmount)
 export(getTourismStats)
