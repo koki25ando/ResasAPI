@@ -22,6 +22,8 @@
 #' 
 #' @export 
 
+getIndustryJobCode(api_key, category="産業", size = "大")
+
 getIndustryJobCode <- function(api_key, category = c("産業", "職業"), 
                                size = c("大", "中", "小")){
   base_url<-'https://opendata.resas-portal.go.jp/'

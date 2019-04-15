@@ -20,8 +20,7 @@
 #'
 #' @examples
 #' \dontrun{
-#'   getCityPrefCode(api_key='Your API key', 
-#'   pref='北海道')
+#'   getCityPrefCode(api_key='Your API key', pref='東京都')
 #' }
 #' 
 #' @export

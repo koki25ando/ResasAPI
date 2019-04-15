@@ -11,13 +11,12 @@
 #'
 #' @examples
 #' \dontrun{
-#'  getEmploymentStat(api_key, prefCode = 01)
+#'  getEmploymentStat(api_key, prefCode = 26)
 #' }
 #' 
 #' @export
 
 getEmploymentStat <- function(api_key, prefCode){
-  
   base_url<-'https://opendata.resas-portal.go.jp/'
 
   cat(paste0("都道府県コード", prefCode, "のどのデータを取得しますか？
@@ -47,13 +46,13 @@ getEmploymentStat <- function(api_key, prefCode){
 13: 70歳～")
     Age = readline(prompt="上記より対象年代を選び数字を入力してください: ")
     
-    request_url = glue(base_url, api, "?prefCode={prefCode}&simcCode={simcCode}&wagesAge={Age}&sicCode={sicCode}")
+    request_url = glue::glue(base_url, api, "?prefCode={prefCode}&simcCode={simcCode}&wagesAge={Age}&sicCode={sicCode}")
   } else if (answer == 2){
     api = "api/v1/municipality/job/perYear"
     simcCode = readline(prompt="産業大分類コードを入力して下さい: ")
     sicCode = readline(prompt="産業中分類コードを入力して下さい: ")
     
-    request_url = glue(base_url, api, "?ismcoCode={simcCode}&prefCode={prefCode}&iscoCode={sicCode}")
+    request_url = glue::glue(base_url, api, "?ismcoCode={simcCode}&prefCode={prefCode}&iscoCode={sicCode}")
   } else if (answer == 3){
     api = "api/v1/regionalEmploy/analysis/portfolio"
     year = readline(prompt="年を選んでください: ")
@@ -66,7 +65,7 @@ getEmploymentStat <- function(api_key, prefCode){
     cat("1．職業大分類で見る
 2．職業中分類で見る")
     class = readline(prompt="表示分類を上記より選択して下さい: ")
-    request_url = glue(base_url, api, "?prefCode={prefCode}&year={year}&matter={matter}&class={class}
+    request_url = glue::glue(base_url, api, "?prefCode={prefCode}&year={year}&matter={matter}&class={class}
 ")
   } else if (answer == 4){
     api = "api/v1/medicalWelfare/careAnalysis/chart"
@@ -103,7 +102,7 @@ getEmploymentStat <- function(api_key, prefCode){
 303 : 介護療養型医療施設
 304 : 地域密着型介護老人福祉施設入所者生活介護")
     middle_category_cd = readline("表示分類コード(中分類)を上記より選択して下さい: ")
-    request_url = glue(base_url, api, 
+    request_url = glue::glue(base_url, api, 
                        "?year={year}&disp_type=1&sort_type=1&matter_1={matter1}&matter_2={matter2}&broad_category_cd={broad_category_cd}&middle_category_cd={middle_category_cd}&prefCode={prefCode}&cityCode=-&insuranceCode=-")
   } else {
     pass
