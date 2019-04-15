@@ -41,7 +41,7 @@ getSettlementAmount = function(api_key, year, prefCode, cityCode, matter = 1){
   pref = jsonlite::fromJSON(getdata.json)$result$prefName
   finance_df = data.frame(data, year, prefCode, pref, cityCode, city) %>% 
     dplyr::select(-code)
-  return(finance_df)
+  finance_df
 }
 
 
@@ -82,7 +82,64 @@ getLocalTexes = function(){
   pref = jsonlite::fromJSON(getdata.json)$result$prefName
   city = jsonlite::fromJSON(getdata.json)$result$cityName
   localtaxes_df = data.frame(data, prefCode, pref, cityCode, city)
-  return(localtaxes_df)
+  localtaxes_df
 }
 
 
+#' Resident tax corporate
+#' 
+#' Resident tax corporate per capita per year of a given municipality from 2008 to 2016
+#' 
+#' @param api_key Your API application key
+#' @param cityCode Code of city
+#' 
+#' @author Koki Ando <koki.25.ando@gmail.com>
+#' 
+#' @seealso \url{https://opendata.resas-portal.go.jp/docs/api/v1/municipality/residentTaxCorporate/perYear.html}
+#' 
+#' @examples
+#' \dontrun{
+#'  getResidentTax(api_key, cityCode = 11362)
+#' }
+#' 
+#' @export
+
+getResidentTax = function(api_key, cityCode){
+  base_url = "https://opendata.resas-portal.go.jp/api/v1/municipality/residentTaxCorporate/perYear?cityCode="
+  getdata.json<-RCurl::getURL(paste0(base_url, cityCode),
+                              httpheader = paste('X-API-KEY:', api_key))
+  
+  data <- jsonlite::fromJSON(getdata.json)$result$data
+  pref = jsonlite::fromJSON(getdata.json)$result$prefName
+  city = jsonlite::fromJSON(getdata.json)$result$cityName
+  taxcorporate_df = data.frame(data, prefCode, pref, cityCode, city)
+  taxcorporate_df
+}
+
+
+#' Property Tax
+#' 
+#' Property tax per capita per year of a given municipality from 2008 to 2016
+#' 
+#' @param api_key Your API application key
+#' @param cityCode Code of city
+#' 
+#' @seealso \url{https://opendata.resas-portal.go.jp/docs/api/v1/municipality/propertyTax/perYear.html}
+#' 
+#' @examples
+#' \dontrun{
+#'  getPropertyTax(api_key, cityCode = 11362)
+#' }
+#' 
+#' @export
+
+getPropertyTax = function(api_key, cityCode){
+  base_url = "https://opendata.resas-portal.go.jp/api/v1/municipality/propertyTax/perYear?cityCode="
+  getdata.json<-RCurl::getURL(paste0(base_url, cityCode),
+                              httpheader = paste('X-API-KEY:', api_key))
+  data <- jsonlite::fromJSON(getdata.json)$result$data
+  city = jsonlite::fromJSON(getdata.json)$result$cityName
+  pref = jsonlite::fromJSON(getdata.json)$result$prefName
+  protax_df = data.frame(data, cityCode, city, pref)
+  protax_df
+}
