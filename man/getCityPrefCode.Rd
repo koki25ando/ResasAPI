@@ -25,8 +25,7 @@ Get list of city codes of a given prefecture
 }
 \examples{
 \dontrun{
-  getCityPrefCode(api_key='Your API key', 
-  pref='北海道')
+  getCityPrefCode(api_key='Your API key', pref='東京都')
 }
 
 }

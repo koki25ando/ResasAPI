@@ -16,7 +16,7 @@ Data of employment data of a given prefecture in Japan
 }
 \examples{
 \dontrun{
- getEmploymentStat(api_key, prefCode = 01)
+ getEmploymentStat(api_key, prefCode = 26)
 }
 
 }
