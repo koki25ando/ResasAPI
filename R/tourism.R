@@ -33,6 +33,7 @@ getForeiners = function(api_key, year, prefCode, purpose){
   country_df
 }
 
+#' Operation Rate
 #' 
 #' @author Koki Ando <koki.25.andog@gmail.com>
 #' 
@@ -64,7 +65,7 @@ getHotelOperationRate = function(api_key, display, unit, prefCode){
 }
 
 
-#' 
+#' Number of guests
 #' 
 #' 
 #' @seealso \url{https://opendata.resas-portal.go.jp/docs/api/v1/tourism/hotelAnalysis/groupStack.html}
