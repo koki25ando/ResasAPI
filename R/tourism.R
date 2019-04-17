@@ -86,19 +86,30 @@ getGuestsNum = function(api_key, matter, display, unit, prefCode){
   main_df
 }
 
+#' Facilities of a prefecture
 #'
-#'
-#'
+#' The number of facilities in a given prefecture per year
 #'
 #' @seealso \url{https://opendata.resas-portal.go.jp/docs/api/v1/tourism/hotelAnalysis/facilityStack.html}
 #' 
 #' @examples
 #' \dontrun{
-#'  getFacilityNum(api_key, display, unit, prefCode = 1)
+#'  getFacilityNum(api_key, display = 1, unit = 0, prefCode = 1)
 #' }
 #' 
 #' @export
 
 getFacilityNum = function(api_key, display, unit, prefCode){
-  
+  base_url = "https://opendata.resas-portal.go.jp/api/v1/tourism/hotelAnalysis/facilityStack?display="
+  getdata.json<-RCurl::getURL(paste0(base_url, display, "&unit=", unit, "&prefCode=", prefCode),
+                              httpheader = paste('X-API-KEY:', api_key))
+  data <- jsonlite::fromJSON(getdata.json)$result$data$years
+  label = jsonlite::fromJSON(getdata.json)$result$data$label
+  data_list = list()
+  for (i in 1:length(data)){
+    data_list[[i]] = data.frame(label[i], data[[i]])
+  }
+  main_df = do.call(rbind, data_list)
+  names(main_df)[1] = "type"
+  data.frame(main_df, prefCode)
 }
