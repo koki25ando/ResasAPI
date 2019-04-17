@@ -2,16 +2,33 @@
 % Please edit documentation in R/tourism.R
 \name{getFacilityNum}
 \alias{getFacilityNum}
-\title{Facilities of a prefecture}
+\title{Facilities Number}
 \usage{
-getFacilityNum(api_key, display, unit, prefCode)
+getFacilityNum(api_key, unit, prefCode)
+}
+\arguments{
+\item{api_key}{Your API application key}
+
+\item{unit}{Unit: 0 returns anunal data, 1 returns monthly data}
+
+\item{prefCode}{Code of a prefecture}
+}
+\value{
+This function returns \code{data.frame} including columns: 
+\itemize{
+ \item type
+ \item year
+ \item month
+ \item value
+ \item prefCode
+}
 }
 \description{
-The number of facilities in a given prefecture per year
+The number of facilities in a given prefecture from 2011 to 2017
 }
 \examples{
 \dontrun{
- getFacilityNum(api_key, display = 1, unit = 0, prefCode = 1)
+ getFacilityNum(api_key, unit = 0, prefCode = 1)
 }
 
 }

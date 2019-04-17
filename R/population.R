@@ -42,6 +42,8 @@ getFuturePopulation = function(api_key, prefCode){
 #' Population composition data of a given prefecture in 2015
 #' 
 #' @param api_key Your API application key
+#' @param prefCode Code of a prefecture
+#' @param cityCode Code of a city. "-" returns all the cities
 #' 
 #' @author Koki Ando <koki.25.ando@gmail.gmail>
 #' 
@@ -76,10 +78,10 @@ getPopulationComposition = function(api_key, prefCode, cityCode = "-"){
 #' Population pyramid data of a given prefecture and municipality in a 2 different years
 #' 
 #' @param api_key Your API application key
-#' @param cityCode
-#' @param prefCode
-#' @param yearLeft
-#' @param yearRight
+#' @param cityCode Code of a city. "-" returns all the cities
+#' @param prefCode Code of a prefecture
+#' @param yearLeft Year number 1
+#' @param yearRight Year number 2
 #' 
 #' @author Koki Ando <koki.25.ando@gmail.gmail>
 #' 
@@ -121,11 +123,13 @@ getPopulationPyramid = function(api_key, cityCode = "-", prefCode, yearLeft, yea
 }
 
 
-#' Population change per year
+#' Population Change
+#' 
+#' Population change data every 5 years from 1985 to 2040
 #' 
 #' @param api_key Your API application key
 #' @param prefCode Code of a prefecture
-#' @param cityCode Code of a city
+#' @param cityCode Code of a city. "-" return all the cities
 #' 
 #' @author Koki Ando <koki.25.ando@gmail.gmail>
 #' 
